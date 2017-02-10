@@ -1,5 +1,6 @@
 #!/bin/bash
 
+base_dir="$(cd "$(dirname "$0")"; pwd)"
 hr="-------------------------------------------"
 br=""
 strength=1024
@@ -29,7 +30,7 @@ then
 	mkdir ./user/p12/
 fi
 
-export OPENSSL_CONF=./conf/client_openssl.cnf
+export OPENSSL_CONF="$base_dir"/conf/client_openssl.cnf
 
 user=$1
 uk=./user/keys/$user.key

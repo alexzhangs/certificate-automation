@@ -1,5 +1,6 @@
 #!/bin/bash
 
+base_dir="$(cd "$(dirname "$0")"; pwd)"
 hr="-------------------------------------------"
 br=""
 strength=1024
@@ -20,7 +21,7 @@ echo "01" > serial
 
 touch index.txt
 
-export OPENSSL_CONF=./conf/ca_openssl.cnf
+export OPENSSL_CONF="$base_dir"/conf/ca_openssl.cnf
 
 echo $br
 echo $hr

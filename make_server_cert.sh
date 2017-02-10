@@ -1,5 +1,6 @@
 #!/bin/bash
 
+base_dir="$(cd "$(dirname "$0")"; pwd)"
 hr="-------------------------------------------"
 br=""
 strength=1024
@@ -28,7 +29,7 @@ then
 	mkdir ./server/requests/
 fi
 
-export OPENSSL_CONF=./conf/server_openssl.cnf
+export OPENSSL_CONF="$base_dir"/conf/server_openssl.cnf
 
 server=$1
 sk=./server/keys/$server.key
