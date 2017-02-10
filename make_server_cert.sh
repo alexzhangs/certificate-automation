@@ -27,6 +27,7 @@ then
 	mkdir ./server/keys/
 	mkdir ./server/certificates/
 	mkdir ./server/requests/
+	mkdir ./server/p12/
 fi
 
 export OPENSSL_CONF="$base_dir"/conf/server_openssl.cnf
@@ -35,6 +36,7 @@ server=$1
 sk=./server/keys/$server.key
 sr=./server/requests/$server.csr
 sc=./server/certificates/$server.crt
+p12=./server/p12/$server.p12
 
 echo $br
 echo $hr
@@ -56,6 +58,13 @@ echo "CA SIGNING AND ISSUING SERVER CERTIFICATE"
 echo $hr
 
 openssl x509 -req -in $sr -out $sc -CA ./ca/ca.crt -CAkey ./ca/ca.key -CAcreateserial -days $valid
+
+echo $br
+echo $hr
+echo "CREATING .P12 FILE TO BACKUP KEY AND CERTIFICATE"
+echo $hr
+
+openssl pkcs12 -in $sc -inkey $sk -export > $p12
 
 echo $br
 echo $hr

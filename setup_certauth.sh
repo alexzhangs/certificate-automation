@@ -11,6 +11,7 @@ mkdir server
 mkdir server/certificates
 mkdir server/requests
 mkdir server/keys
+mkdir server/p12
 mkdir user
 mkdir user/certificates
 mkdir user/requests
